@@ -29,14 +29,15 @@ HireBird is a full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) based
 - Redux Toolkit (for state management)  
 - Axios  
 - Tailwind CSS  
-- TypeScript (optional if used)  
+- Shadcn/ui
 
 ### Backend:
 - Node.js  
 - Express.js  
 - MongoDB (Mongoose)  
 - Multer (for file uploads)  
-- JWT (Authentication)  
+- JWT (Authentication)
+- Cloudinary (for PDF and file upload)
 
 ---
 
