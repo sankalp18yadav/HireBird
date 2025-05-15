@@ -1,4 +1,4 @@
-# HireBird 🐦 – Job Portal Website
+# HireBird – Job Portal Website
 
 HireBird is a full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) based job portal that allows companies to post jobs and candidates to apply seamlessly. This project is designed to simplify the hiring process while showcasing modern web development best practices.
 
