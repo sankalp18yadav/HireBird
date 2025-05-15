@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build files
+client/build/
+server/dist/
+
+# Logs
+logs/
+*.log
+
+# OS & editor
+.DS_Store
+.env
+.env.local
+.vscode/
+
+# Ignore all Partners folders (any level)
+Partners/
+src/Partners/
+client/src/Partners/
