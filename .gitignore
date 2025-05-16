@@ -17,3 +17,8 @@ logs/
 Partners/
 src/Partners/
 client/src/Partners/
+
+# Dist
+
+dist
+client/dist

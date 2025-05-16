@@ -1,44 +1,63 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import connectDB from './config/database.js' // Import the applicant routes
-import cookieParser from 'cookie-parser'
-import cors from "cors"
-import userRoutes from "./routes/user.route.js"; // Import the user routes
-import companyRoute from './routes/company.route.js'; // Import the company routes
-import jobRoute from './routes/job.route.js'; // Import the job routes
-import applicationRoute from './routes/application.route.js'; // Import the application routes
+import express from 'express';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import connectDB from './config/database.js';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+
+import userRoutes from './routes/user.route.js';
+import companyRoute from './routes/company.route.js';
+import jobRoute from './routes/job.route.js';
+import applicationRoute from './routes/application.route.js';
 
 dotenv.config();
 
 const app = express();
 
+// To use __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use(express.json()); //allow express to parse JSON data
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-app.use(express.urlencoded({ extended: true })); //allow express to parse URL-encoded data
-
-app.use(cookieParser()); // Middleware to parse cookies from the request headers
-
+// CORS setup for both dev and production
 const corsOptions = {
-  origin: "http://localhost:5173", // Allow requests from this origin
-  credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://your-frontend-url.onrender.com'  // Replace with your deployed frontend URL on Render or your domain
+    : 'http://localhost:5173',
+  credentials: true,
 };
+app.use(cors(corsOptions));
 
-app.use(cors(corsOptions)); // Use CORS middleware with the specified options
+// API Routes
+app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/company', companyRoute);
+app.use('/api/v1/job', jobRoute);
+app.use('/api/v1/application', applicationRoute);
 
-const PORT = process.env.PORT || 5000; // Set the port to either the environment variable or 5000
+// Serve React frontend build in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.use("/api/v1/user", userRoutes); // Mount the user routes on the /api/user path
+  // For any route not handled by API, serve index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+  });
+}
 
-app.use("/api/v1/company", companyRoute); // Mount the company routes on the /api/company path
+const PORT = process.env.PORT || 8000;
 
-app.use("/api/v1/job", jobRoute); // Mount the job routes on the /api/job path
-
-app.use("/api/v1/application", applicationRoute); // Mount the application routes on the /api/application path
-
-app.listen(PORT, () => {    
-  
-      connectDB();
-      console.log(`Server is running on port 5000 http://localhost:${PORT}`); // Log the server start message
-
-});
+// Connect DB first, then start server
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Failed to connect to DB', error);
+  });
