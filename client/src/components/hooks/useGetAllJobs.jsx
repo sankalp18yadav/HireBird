@@ -1,4 +1,4 @@
-import { setAllJobs } from "@/store/jobSlice";
+import { setAllJobs } from "@/store/jobslice";
 import { JOB_API_END_POINT } from "../../utils/constant";
 import axios from "axios";
 import { useEffect } from "react";
