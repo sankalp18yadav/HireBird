@@ -4,9 +4,9 @@ HireBird is a full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) based
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Project Live Link
 
-> Coming Soon...
+https://hirebird.onrender.com
 
 ---
 
