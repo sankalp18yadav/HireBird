@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true })); //allow express to parse URL-en
 app.use(cookieParser()); // Middleware to parse cookies from the request headers
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Allow requests from this origin
+  origin: "https://hirebird.onrender.com", // Allow requests from this origin
   credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
 };
 
