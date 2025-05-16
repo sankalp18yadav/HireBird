@@ -42,7 +42,6 @@ export const applyJob = async (req, res) => {
 
     job.applications.push(newApplication._id);
     await job.save();
-    console.log(job.applications);
 
     return res.status(201).json({
       success: true,

@@ -57,7 +57,7 @@ const CompanyCreate = () => {
   };
 
   return (
-    <div>
+    <div className="pt-20">
       <div className="max-w-4xl mx-auto">
         {/* Company Name */}
 
