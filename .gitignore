@@ -13,11 +13,6 @@ logs/
 .env.local
 .vscode/
 
-# Ignore all Partners folders (any level)
-Partners/
-src/Partners/
-client/src/Partners/
-
 # Dist
 
 dist
