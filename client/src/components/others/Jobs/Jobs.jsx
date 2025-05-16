@@ -46,21 +46,21 @@ const Jobs = () => {
             return normalize(job.jobType) === filterValue;
 
           case "Experience":
-            if (filterValue === "0-1 Years") return job.experience === 0;
-            if (filterValue === "1-2 Years")
+            if (filterValue === "01years") return job.experience === 0;
+            if (filterValue === "12years")
               return job.experience >= 1 && job.experience <= 2;
-            if (filterValue === "3-5 Years")
+            if (filterValue === "35years")
               return job.experience >= 3 && job.experience <= 5;
-            if (filterValue === "5+ Years") return job.experience > 5;
+            if (filterValue === "5+years") return job.experience > 5;
             return true;
 
           case "Salary":
-            if (filterValue === "0-10 LPA") return job.salary <= 10;
-            if (filterValue === "10-30 LPA")
+            if (filterValue === "010lpa") return job.salary <= 10;
+            if (filterValue === "1030lpa")
               return job.salary > 10 && job.salary <= 30;
-            if (filterValue === "30-60 LPA")
+            if (filterValue === "3060lpa")
               return job.salary > 30 && job.salary <= 60;
-            if (filterValue === "60+ LPA") return job.salary > 60;
+            if (filterValue === "60+lpa") return job.salary > 60;
             return true;
 
           case "Company":
@@ -88,8 +88,7 @@ const Jobs = () => {
   }, [allJobs, searchedQuery]);
 
   // Debug logs to track data
-  useEffect(() => {
-  }, [allJobs, filterJobs, searchedQuery]);
+  useEffect(() => {}, [allJobs, filterJobs, searchedQuery]);
 
   return (
     <div>
