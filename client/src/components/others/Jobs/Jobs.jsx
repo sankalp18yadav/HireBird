@@ -46,21 +46,21 @@ const Jobs = () => {
             return normalize(job.jobType) === filterValue;
 
           case "Experience":
-            if (filterValue === "0-1years") return job.experience === 0;
-            if (filterValue === "1-2years")
+            if (filterValue === "0-1 Years") return job.experience === 0;
+            if (filterValue === "1-2 Years")
               return job.experience >= 1 && job.experience <= 2;
-            if (filterValue === "3-5years")
+            if (filterValue === "3-5 Years")
               return job.experience >= 3 && job.experience <= 5;
-            if (filterValue === "5+years") return job.experience > 5;
+            if (filterValue === "5+ Years") return job.experience > 5;
             return true;
 
           case "Salary":
-            if (filterValue === "0-5lpa") return job.salary <= 5;
-            if (filterValue === "5-10lpa")
-              return job.salary > 5 && job.salary <= 10;
-            if (filterValue === "10-15lpa")
-              return job.salary > 10 && job.salary <= 15;
-            if (filterValue === "15+lpa") return job.salary > 15;
+            if (filterValue === "0-10 LPA") return job.salary <= 10;
+            if (filterValue === "10-30 LPA")
+              return job.salary > 10 && job.salary <= 30;
+            if (filterValue === "30-60 LPA")
+              return job.salary > 30 && job.salary <= 60;
+            if (filterValue === "60+ LPA") return job.salary > 60;
             return true;
 
           case "Company":
