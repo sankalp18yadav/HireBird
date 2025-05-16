@@ -89,9 +89,6 @@ const Jobs = () => {
 
   // Debug logs to track data
   useEffect(() => {
-    console.log("All jobs from store:", allJobs);
-    console.log("Filtered jobs:", filterJobs);
-    console.log("Current searched query:", searchedQuery);
   }, [allJobs, filterJobs, searchedQuery]);
 
   return (
